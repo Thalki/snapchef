@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recipe Suggestions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Recipes for {{ ingredient }}</h1>
+    <ul>
+        {% for recipe in recipes %}
+        <li>
+            <h3>{{ recipe.name }}</h3>
+            <p>Ingredients: {{ recipe.ingredients | join(', ') }}</p>
+            <p>Nutritional Info: {{ recipe.nutrition }}</p>
+            <form method="POST" action="/add_to_pantry">
+                <button type="submit" name="ingredient" value="{{ recipe.name }}">Add to Pantry</button>
+            </form>
+            <form method="POST" action="/generate_shopping_list">
+                <button type="submit" name="recipe" value="{{ recipe.name }}">Get Shopping List</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
