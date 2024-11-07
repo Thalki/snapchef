@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Image-Based Recipe Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to Recipe Finder</h1>
+    <form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST">
+        <input type="file" name="file" required>
+        <button type="submit">Find Recipes</button>
+    </form>
+</body>
+</html>
